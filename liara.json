@@ -1,0 +1,8 @@
+{
+    "disks": [
+        {
+            "name": "fgdisk",
+            "mountTo": "storage"
+        }
+    ]
+}
