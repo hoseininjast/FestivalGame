@@ -10,20 +10,15 @@
                     <div class="sidebar-inner dt-sl">
                         <div class="sidebar-banner">
                             <div class="row">
-                                <div class="col-12 mb-1">
-                                    <div class="widget-banner">
-                                        <a href="#">
-                                            <img src="/Front/assets/img/banner/banner-side-slider-1.jpg" alt="">
-                                        </a>
+                                @foreach(\App\Models\SiteSettings\Banner::whereIn('Position' , [1,2])->get() as $banner)
+                                    <div class="col-12 mb-1">
+                                        <div class="widget-banner">
+                                            <a href="{{rawurldecode($banner->Link)}}">
+                                                <img src="{{$banner->ImageUrl}}" alt="" style="width: 412px;height: 206px">
+                                            </a>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="widget-banner">
-                                        <a href="#">
-                                            <img src="/Front/assets/img/banner/banner-side-slider-2.jpg" alt="">
-                                        </a>
-                                    </div>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>
@@ -31,54 +26,24 @@
                 </aside>
                 <div class="col-lg-8 col-md-12 order-1">
                     <!-- Start main-slider -->
-                    <section id="main-slider"
-                             class="main-slider main-slider-cs mt-1 carousel slide carousel-fade card hidden-sm"
+                    <section id="main-slider" class="main-slider main-slider-cs mt-1 carousel slide carousel-fade card hidden-sm"
                              data-ride="carousel">
                         <ol class="carousel-indicators">
-                            <li data-target="#main-slider" data-slide-to="0" class="active"></li>
-                            <li data-target="#main-slider" data-slide-to="1"></li>
-                            <li data-target="#main-slider" data-slide-to="2"></li>
-                            <li data-target="#main-slider" data-slide-to="3"></li>
-                            <li data-target="#main-slider" data-slide-to="4"></li>
-                            <li data-target="#main-slider" data-slide-to="5"></li>
-                            <li data-target="#main-slider" data-slide-to="6"></li>
+                            @foreach(\App\Models\Sliders::orderby('Priority')->get() as $slider)
+                                <li data-target="#main-slider" data-slide-to="{{$loop->index}}" class="@if($loop->first) active  @endif"></li>
+
+                            @endforeach
+
                         </ol>
                         <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <a class="main-slider-slide" href="#">
-                                    <img src="/Front/assets/img/main-slider/img-slider-2/1.jpg" alt="" class="img-fluid">
-                                </a>
-                            </div>
-                            <div class="carousel-item">
-                                <a class="main-slider-slide" href="#">
-                                    <img src="/Front/assets/img/main-slider/img-slider-2/2.jpg" alt="" class="img-fluid">
-                                </a>
-                            </div>
-                            <div class="carousel-item">
-                                <a class="main-slider-slide" href="#">
-                                    <img src="/Front/assets/img/main-slider/img-slider-2/3.jpg" alt="" class="img-fluid">
-                                </a>
-                            </div>
-                            <div class="carousel-item">
-                                <a class="main-slider-slide" href="#">
-                                    <img src="/Front/assets/img/main-slider/img-slider-2/4.jpg" alt="" class="img-fluid">
-                                </a>
-                            </div>
-                            <div class="carousel-item">
-                                <a class="main-slider-slide" href="#">
-                                    <img src="/Front/assets/img/main-slider/img-slider-2/5.jpg" alt="" class="img-fluid">
-                                </a>
-                            </div>
-                            <div class="carousel-item">
-                                <a class="main-slider-slide" href="#">
-                                    <img src="/Front/assets/img/main-slider/img-slider-2/6.jpg" alt="" class="img-fluid">
-                                </a>
-                            </div>
-                            <div class="carousel-item">
-                                <a class="main-slider-slide" href="#">
-                                    <img src="/Front/assets/img/main-slider/img-slider-2/7.jpg" alt="" class="img-fluid">
-                                </a>
-                            </div>
+                            @foreach(\App\Models\Sliders::orderby('Priority')->get() as $slider)
+                                <div class="carousel-item @if($loop->first) active  @endif ">
+                                    <a class="main-slider-slide" href="{{rawurldecode($slider->Link)}}">
+                                        <img src="{{$slider->ImageUrl}}" alt="" class="img-fluid" style="height: 414px;width: 100%;">
+                                    </a>
+                                </div>
+                            @endforeach
+
                         </div>
                         <a class="carousel-control-prev" href="#main-slider" role="button" data-slide="prev">
                             <i class="mdi mdi-chevron-right"></i>
@@ -87,53 +52,22 @@
                             <i class="mdi mdi-chevron-left"></i>
                         </a>
                     </section>
-                    <section id="main-slider-res"
-                             class="main-slider carousel slide carousel-fade card d-none show-sm" data-ride="carousel">
+                    <section id="main-slider-res" class="main-slider carousel slide carousel-fade card d-none show-sm" data-ride="carousel">
                         <ol class="carousel-indicators">
-                            <li data-target="#main-slider-res" data-slide-to="0" class="active"></li>
-                            <li data-target="#main-slider-res" data-slide-to="1"></li>
-                            <li data-target="#main-slider-res" data-slide-to="2"></li>
-                            <li data-target="#main-slider-res" data-slide-to="3"></li>
-                            <li data-target="#main-slider-res" data-slide-to="4"></li>
-                            <li data-target="#main-slider-res" data-slide-to="5"></li>
+                            @foreach(\App\Models\Sliders::orderby('Priority')->get() as $slider)
+                                <li data-target="#main-slider" data-slide-to="{{$loop->index}}" class="@if($loop->first) active  @endif"></li>
+
+                            @endforeach
                         </ol>
                         <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <a class="main-slider-slide" href="#">
-                                    <img src="/Front/assets/img/main-slider/slider-responsive/1.jpg" alt=""
-                                         class="img-fluid">
-                                </a>
-                            </div>
-                            <div class="carousel-item">
-                                <a class="main-slider-slide" href="#">
-                                    <img src="/Front/assets/img/main-slider/slider-responsive/2.jpg" alt=""
-                                         class="img-fluid">
-                                </a>
-                            </div>
-                            <div class="carousel-item">
-                                <a class="main-slider-slide" href="#">
-                                    <img src="/Front/assets/img/main-slider/slider-responsive/3.jpg" alt=""
-                                         class="img-fluid">
-                                </a>
-                            </div>
-                            <div class="carousel-item">
-                                <a class="main-slider-slide" href="#">
-                                    <img src="/Front/assets/img/main-slider/slider-responsive/4.jpg" alt=""
-                                         class="img-fluid">
-                                </a>
-                            </div>
-                            <div class="carousel-item">
-                                <a class="main-slider-slide" href="#">
-                                    <img src="/Front/assets/img/main-slider/slider-responsive/5.jpg" alt=""
-                                         class="img-fluid">
-                                </a>
-                            </div>
-                            <div class="carousel-item">
-                                <a class="main-slider-slide" href="#">
-                                    <img src="/Front/assets/img/main-slider/slider-responsive/6.jpg" alt=""
-                                         class="img-fluid">
-                                </a>
-                            </div>
+                            @foreach(\App\Models\Sliders::orderby('Priority')->get() as $slider)
+                                <div class="carousel-item @if($loop->first) active  @endif ">
+                                    <a class="main-slider-slide" href="{{rawurldecode($slider->Link)}}">
+                                        <img src="{{$slider->ImageUrl}}" alt="" class="img-fluid" style="height: 414px;width: 100%;">
+                                    </a>
+                                </div>
+                            @endforeach
+
                         </div>
                         <a class="carousel-control-prev" href="#main-slider-res" role="button" data-slide="prev">
                             <i class="mdi mdi-chevron-right"></i>
@@ -614,20 +548,16 @@
             <!-- End Product-Slider -->
             <!-- Start Banner -->
             <div class="row mt-3 mb-5">
-                <div class="col-sm-6 col-12 mb-2">
-                    <div class="widget-banner">
-                        <a href="#">
-                            <img src="/Front/assets/img/banner/medium-banner-1.jpg" alt="">
-                        </a>
+                @foreach(\App\Models\SiteSettings\Banner::whereIn('Position' , [3,4])->get() as $banner)
+                    <div class="col-sm-6 col-12 mb-2">
+                        <div class="widget-banner">
+                            <a href="{{rawurldecode($banner->Link)}}">
+                                <img src="{{$banner->ImageUrl}}" alt="" style="width: 610px ; height: 223px">
+                            </a>
+                        </div>
                     </div>
-                </div>
-                <div class="col-sm-6 col-12 mb-2">
-                    <div class="widget-banner">
-                        <a href="#">
-                            <img src="/Front/assets/img/banner/medium-banner-2.jpg" alt="">
-                        </a>
-                    </div>
-                </div>
+                @endforeach
+
             </div>
             <!-- End Banner -->
         </div>
@@ -800,34 +730,17 @@
         <div class="container main-container">
             <!-- Start Banner -->
             <div class="row mt-3 mb-5">
-                <div class="col-md-3 col-sm-6 col-6 mb-2">
-                    <div class="widget-banner">
-                        <a href="#">
-                            <img src="/Front/assets/img/banner/small-banner-5.jpg" alt="">
-                        </a>
+                @foreach(\App\Models\SiteSettings\Banner::whereIn('Position' , [5,6,7,8])->get() as $banner)
+                    <div class="col-md-3 col-sm-6 col-6 mb-2">
+                        <div class="widget-banner">
+                            <a href="{{rawurldecode($banner->Link)}}">
+                                <img src="{{$banner->ImageUrl}}" alt="" style="width: 209px ; height: 217px">
+                            </a>
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-3 col-sm-6 col-6 mb-2">
-                    <div class="widget-banner">
-                        <a href="#">
-                            <img src="/Front/assets/img/banner/small-banner-6.jpg" alt="">
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6 col-6 mb-2">
-                    <div class="widget-banner">
-                        <a href="#">
-                            <img src="/Front/assets/img/banner/small-banner-7.jpg" alt="">
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6 col-6 mb-2">
-                    <div class="widget-banner">
-                        <a href="#">
-                            <img src="/Front/assets/img/banner/small-banner-8.jpg" alt="">
-                        </a>
-                    </div>
-                </div>
+
+                @endforeach
+
             </div>
             <!-- End Banner -->
             <!-- Start Category-Section -->
@@ -835,74 +748,20 @@
                 <div class="col-12">
                     <div class="category-section dt-sn dt-sl border">
                         <div class="category-section-title dt-sl">
-                            <h3>بیش از ۱،۵۰۰،۰۰۰ کالا در دسته‌بندی‌های مختلف</h3>
+                            <h3>بیش از {{ceil(\App\Models\Product::count() / 100) * 100}} کالا در دسته‌بندی‌های مختلف</h3>
                         </div>
                         <div class="category-section-slider dt-sl">
                             <div class="category-slider owl-carousel">
-                                <div class="item">
-                                    <a href="#" class="promotion-category">
-                                        <img src="/Front/assets/img/category/notebook-computer.png" alt="">
-                                        <h4 class="promotion-category-name">کالای دیجیتال</h4>
-                                        <h6 class="promotion-category-quantity">۱۵۶۰۰۰ کالا</h6>
-                                    </a>
-                                </div>
-                                <div class="item">
-                                    <a href="#" class="promotion-category">
-                                        <img src="/Front/assets/img/category/lifeline-in-a-heart-outline.png" alt="">
-                                        <h4 class="promotion-category-name">آرایشی، بهداشتی و سلامت</h4>
-                                        <h6 class="promotion-category-quantity">۴۸۰۰۰ کالا</h6>
-                                    </a>
-                                </div>
-                                <div class="item">
-                                    <a href="#" class="promotion-category">
-                                        <img src="/Front/assets/img/category/repair-tools.png" alt="">
-                                        <h4 class="promotion-category-name">خودرو،ابزار و اداری</h4>
-                                        <h6 class="promotion-category-quantity">۵۶۰۰۰ کالا</h6>
-                                    </a>
-                                </div>
-                                <div class="item">
-                                    <a href="#" class="promotion-category">
-                                        <img src="/Front/assets/img/category/hanbok.png" alt="">
-                                        <h4 class="promotion-category-name">مد و پوشاک</h4>
-                                        <h6 class="promotion-category-quantity">۲۱۷۰۰۰ کالا</h6>
-                                    </a>
-                                </div>
-                                <div class="item">
-                                    <a href="#" class="promotion-category">
-                                        <img src="/Front/assets/img/category/sofa.png" alt="">
-                                        <h4 class="promotion-category-name">خانه و آشپزخانه</h4>
-                                        <h6 class="promotion-category-quantity">۲۲۹۰۰۰ کالا</h6>
-                                    </a>
-                                </div>
-                                <div class="item">
-                                    <a href="#" class="promotion-category">
-                                        <img src="/Front/assets/img/category/school-material.png" alt="">
-                                        <h4 class="promotion-category-name">لوازم تحریر و هنر</h4>
-                                        <h6 class="promotion-category-quantity">۸۶۰۰۰ کالا</h6>
-                                    </a>
-                                </div>
-                                <div class="item">
-                                    <a href="#" class="promotion-category">
-                                        <img src="/Front/assets/img/category/baby-girl.png" alt="">
-                                        <h4 class="promotion-category-name">کودک و نوزاد</h4>
-                                        <h6 class="promotion-category-quantity">۳۲۰۰۰ کالا</h6>
-                                    </a>
-                                </div>
-                                <div class="item">
-                                    <a href="#" class="promotion-category">
-                                        <img src="/Front/assets/img/category/adventurer.png" alt="">
-                                        <h4 class="promotion-category-name">ورزش و سفر</h4>
-                                        <h6 class="promotion-category-quantity">۱۵۰۰۰ کالا</h6>
-                                    </a>
-                                </div>
-                                <div class="item">
-                                    <a href="#" class="promotion-category">
-                                        <img src="/Front/assets/img/category/restaurant-cutlery-circular-symbol-of-a-spoon-and-a-fork-in-a-circle.png"
-                                             alt="">
-                                        <h4 class="promotion-category-name">خوردنی و آشامیدنی</h4>
-                                        <h6 class="promotion-category-quantity">۲۲۰۰۰ کالا</h6>
-                                    </a>
-                                </div>
+                                @foreach(\App\Models\ProductCategory::where('ParentID' , null)->get() as $category)
+                                    <div class="item">
+                                        <a href="{{route('Front.Category' , $category->Name)}}" class="promotion-category">
+                                            <img src="{{$category->Icon}}" alt="">
+                                            <h4 class="promotion-category-name">{{$category->Name}}</h4>
+                                            <h6 class="promotion-category-quantity">{{number_format(ceil($category->Products()->count() / 100) * 100 ) }} کالا</h6>
+                                        </a>
+                                    </div>
+                                @endforeach
+
                             </div>
                         </div>
                     </div>
@@ -1098,13 +957,18 @@
             <!-- End Product-Slider -->
             <!-- Start Banner -->
             <div class="row mt-3 mb-5">
-                <div class="col-12">
-                    <div class="widget-banner">
-                        <a href="#">
-                            <img src="/Front/assets/img/banner/large-banner.jpg" alt="">
-                        </a>
+                @foreach(\App\Models\SiteSettings\Banner::whereIn('Position' , [9])->get() as $banner)
+                    <div class="col-12">
+                        <div class="widget-banner">
+                            <a href="{{rawurldecode($banner->Link)}}">
+                                <img src="{{$banner->ImageUrl}}" alt="" style="width: 1250px; height: 159px">
+                            </a>
+                        </div>
                     </div>
-                </div>
+
+
+                @endforeach
+
             </div>
             <!-- End Banner -->
             <!-- Start Product-Slider -->
@@ -1580,43 +1444,6 @@
                 </div>
             </section>
             <!-- End Feature-Product -->
-            <!-- Start Brand-Slider -->
-            <section class="slider-section dt-sl mb-5">
-                <div class="row">
-                    <!-- Start Product-Slider -->
-                    <div class="col-12">
-                        <div class="brand-slider carousel-lg owl-carousel owl-theme">
-                            <div class="item">
-                                <img src="/Front/assets/img/brand/1076.png" class="img-fluid" alt="">
-                            </div>
-                            <div class="item">
-                                <img src="/Front/assets/img/brand/1078.png" class="img-fluid" alt="">
-                            </div>
-                            <div class="item">
-                                <img src="/Front/assets/img/brand/1080.png" class="img-fluid" alt="">
-                            </div>
-                            <div class="item">
-                                <img src="/Front/assets/img/brand/2315.png" class="img-fluid" alt="">
-                            </div>
-                            <div class="item">
-                                <img src="/Front/assets/img/brand/1086.png" class="img-fluid" alt="">
-                            </div>
-                            <div class="item">
-                                <img src="/Front/assets/img/brand/5189.png" class="img-fluid" alt="">
-                            </div>
-                            <div class="item">
-                                <img src="/Front/assets/img/brand/1000006973.png" class="img-fluid" alt="">
-                            </div>
-                            <div class="item">
-                                <img src="/Front/assets/img/brand/1000014452.jpg" class="img-fluid" alt="">
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Product-Slider -->
-
-                </div>
-            </section>
-            <!-- End Brand-Slider -->
         </div>
     </main>
 @endsection

@@ -15,6 +15,11 @@ class CreateUserShoppingCardsTable extends Migration
     {
         Schema::create('user_shopping_cards', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('UserID');
+            $table->foreign('UserID')->on('users')->references('id')->cascadeOnDelete();
+            $table->unsignedBigInteger('ProductID');
+            $table->foreign('ProductID')->on('products')->references('id')->cascadeOnDelete();
+            $table->integer('Count');
             $table->timestamps();
         });
     }

@@ -12,41 +12,82 @@
                         <div class="section-title title-wide mb-1 no-after-title-wide">
                             <h2 class="font-weight-bold">ثبت نام</h2>
                         </div>
-                        <div class="message-light">
-                            اگر قبلا با ایمیل ثبت‌نام کرده‌اید، نیاز به ثبت‌نام مجدد با شماره همراه ندارید
-                        </div>
-                        <form action="#">
+
+                        <form method="POST" action="{{ route('register') }}" id="Registerform">
+                            @csrf
                             <div class="form-row-title">
-                                <h3>ایمیل یا شماره موبایل</h3>
+                                <h3>شماره موبایل</h3>
                             </div>
                             <div class="form-row with-icon">
-                                <input type="text" class="input-ui pr-2"
-                                       placeholder="ایمیل یا شماره موبایل خود را وارد نمایید">
+                                <input type="number" id="PhoneNumber" name="PhoneNumber" class="input-ui pr-2" placeholder="شماره موبایل خود را وارد نمایید">
                                 <i class="mdi mdi-account-circle-outline"></i>
                             </div>
-                            <div class="form-row-title">
-                                <h3>رمز عبور</h3>
-                            </div>
-                            <div class="form-row with-icon">
-                                <input type="password" class="input-ui pr-2"
-                                       placeholder="رمز عبور خود را وارد نمایید">
-                                <i class="mdi mdi-lock-open-variant-outline"></i>
-                            </div>
-                            <div class="form-row mt-2">
-                                <div class="custom-control custom-checkbox float-right mt-2">
-                                    <input type="checkbox" class="custom-control-input" id="customCheck3">
-                                    <label class="custom-control-label text-justify" for="customCheck3">
-                                        <a href="#">حریم خصوصی</a> و <a href="#">شرایط و قوانین</a> استفاده از سرویس
-                                        های سایت دیدیکالا را مطالعه نموده و با کلیه موارد آن موافقم.
-                                    </label>
+
+
+                            <div id="Step1" style="display: none">
+                                <div class="form-row-title">
+                                    <h3>کد دریافتی</h3>
                                 </div>
+                                <div class="form-row with-icon">
+                                    <input type="number" id="VerificationCode" name="VerificationCode" class="input-ui pr-2" placeholder="لطفا کد دریفاتی خود را وارد نمایید" required>
+                                    <i class="mdi mdi-email"></i>
+                                </div>
+
+                                <div class="form-row mt-3" id="CheckCodeButton">
+                                    <button type="button" class="btn-primary-cm btn-with-icon mx-auto w-100" onclick="CheckCode()">
+                                        <i class="mdi mdi-message-processing"></i>
+                                        ثبت کد
+                                    </button>
+                                </div>
+
+
                             </div>
-                            <div class="form-row mt-3">
-                                <button class="btn-primary-cm btn-with-icon mx-auto w-100">
-                                    <i class="mdi mdi-account-circle-outline"></i>
-                                    ثبت نام در دیدیکالا
+
+
+
+
+                            <div class="form-row mt-3" id="ReceviveCodeButton">
+                                <button type="button" class="btn-primary-cm btn-with-icon mx-auto w-100" onclick="GetVerificationCode()">
+                                    <i class="mdi mdi-message-processing"></i>
+                                    دریافت کد
                                 </button>
                             </div>
+                            <div id="Step2" style="display: none">
+
+                                <div class="form-row-title">
+                                    <h3>ایمیل</h3>
+                                </div>
+                                <div class="form-row with-icon">
+                                    <input type="email" id="email" name="email" class="input-ui pr-2" placeholder="ایمیل خود را وارد نمایید" required>
+                                    <i class="mdi mdi-email"></i>
+                                </div>
+
+
+                                <div class="form-row-title">
+                                    <h3>رمز عبور</h3>
+                                </div>
+                                <div class="form-row with-icon " >
+                                    <input type="password" id="password" name="password" class="input-ui pr-2" placeholder="رمز عبور خود را وارد نمایید" required>
+                                    <i class="mdi mdi-lock-open-variant-outline"></i>
+                                </div>
+                                <div class="form-row mt-2">
+                                    <div class="custom-control custom-checkbox float-right mt-2">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck3" required>
+                                        <label class="custom-control-label text-justify" for="customCheck3">
+                                            <a href="#">حریم خصوصی</a> و <a href="#">شرایط و قوانین</a> استفاده از سرویس
+                                            های {{env('APP_NAME')}} را مطالعه نموده و با کلیه موارد آن موافقم.
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-row mt-3">
+                                    <button type="submit" class="btn-primary-cm btn-with-icon mx-auto w-100">
+                                        <i class="mdi mdi-account-circle-outline"></i>
+                                        ثبت نام در {{env('APP_NAME')}}
+                                    </button>
+                                </div>
+                            </div>
+
+
                         </form>
                         <div class="form-footer mt-3">
                             <div>
@@ -60,77 +101,53 @@
         </div>
     </main>
 @endsection
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
-                        @csrf
+@section('js')
+<script>
+    var Code ;
 
-                        <div class="row mb-3">
-                            <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
 
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+    const form = document.getElementById('Registerform');
+    form.addEventListener('keypress', function(e) {
+        if (e.keyCode === 13) {
+            e.preventDefault();
+        }
+    });
 
-                                @error('name')
-                                <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
 
-                        <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
+    function GetVerificationCode(){
+        var phonenumber = $('#PhoneNumber').val()
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            type: 'POST',
+            async: false,
+            cache: false,
+        });
+        $.ajax({
+            url: '{{route('V1.GetVerificationCode')}}',
+            data: {
+                PhoneNumber : phonenumber
+            },
+            success: function (data) {
+                ShowAlert('success' , data.Message)
+                Code = data.Code;
+                $('#ReceviveCodeButton').hide(400)
+                $('#Step1').show(400);
+                $('#PhoneNumber').prop('readOnly' , true)
+            },
+        });
+    }
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                                @error('email')
-                                <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                @error('password')
-                                <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
-                        </div>
-
-                        <div class="row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
+    function CheckCode(){
+        var recevivedCode = $('#VerificationCode').val();
+        if (recevivedCode == Code){
+            $('#Step2').show(400);
+            $('#Step1').hide(400);
+        }else {
+            ShowAlert('error' , 'کد وارد شده با کد ارسالی همخوانی ندارد')
+        }
+    }
+</script>
+@endsection

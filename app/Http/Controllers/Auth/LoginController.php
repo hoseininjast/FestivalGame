@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -37,4 +39,31 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+
+
+
+    public function login (Request $request) {
+        $request->validate([
+            'LoginMethod' => ['required' , 'string'],
+            'password' => ['required' , 'string'],
+        ]);
+
+
+        $User = User::where('email' , $request->LoginMethod)->orwhere('PhoneNumber' , $request->LoginMethod)->first();
+        if (!\Hash::check($request->password , $User->password)) {
+            return $this->sendFailedLoginResponse($request);
+        }
+
+        if ($User) {
+            \Auth::login($User ,$request->get('remember') );
+            \Alert::success('عملیات موفق آمیز' , 'شما با موفقیت وارد شدید.');
+            return $this->sendLoginResponse($request);
+        }else{
+            return $this->sendFailedLoginResponse($request);
+        }
+
+    }
+
+
 }

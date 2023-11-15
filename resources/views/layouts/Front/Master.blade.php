@@ -8,7 +8,14 @@
     <meta name="theme-color" content="#f7858d">
     <meta name="msapplication-navbutton-color" content="#f7858d">
     <meta name="apple-mobile-web-app-status-bar-style" content="#f7858d">
-    <title>didikala | Index Page</title>
+    <title>
+        {{env('APP_NAME')}}
+        @if (request()->segments())
+            @if(request()->segment(1))
+                | {{request()->segment(1)}}
+            @endif
+        @endif
+    </title>
     <!-- Font Icon -->
     <link rel="stylesheet" href="{{asset('Front/assets/css/vendor/font-awesome.min.css')}}">
     <link rel="stylesheet" href="{{asset('Front/assets/css/vendor/materialdesignicons.min.css')}}">
@@ -24,6 +31,8 @@
     <!-- Main CSS File -->
     <link rel="stylesheet" href="{{asset('Front/assets/css/main.css')}}">
     <link rel="stylesheet" href="{{asset('Front/assets/css/colors/default.css')}}" id="colorswitch">
+    @yield('head')
+
 </head>
 
 <body>
@@ -36,6 +45,12 @@
     <!-- End main-content -->
     <!-- Start footer -->
     @include('layouts.Front.Footer')
+
+
+    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+        @csrf
+    </form>
+
     <!-- End footer -->
 </div>
 <!-- colorPanel -->
@@ -60,6 +75,21 @@
 <script src="{{asset('Front/assets/js/vendor/theia-sticky-sidebar.min.js')}}"></script>
 <!-- Main JS File -->
 <script src="{{asset('Front/assets/js/main.js')}}"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.33/dist/sweetalert2.all.min.js"></script>
+
+@include('sweetalert::alert')
+<script>
+
+    @if($errors->any())
+    @foreach($errors->all() as $err)
+    ShowToast('error' , '{{$err}}')
+    @endforeach
+    @endif
+
+</script>
+@yield('js')
+
 </body>
 
 </html>

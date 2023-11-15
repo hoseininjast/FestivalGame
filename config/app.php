@@ -166,6 +166,7 @@ return [
          * Package Service Providers...
          */
         Kavenegar\Laravel\ServiceProvider::class,
+        Anetwork\Validation\PersianValidationServiceProvider::class,
 
         /*
          * Application Service Providers...

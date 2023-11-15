@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -13,6 +15,18 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        User::create([
+            'FirstName' => 'Admin',
+            'LastName' => 'Admin',
+            'ProfileImage' => asset('images/Avatars/Male.png'),
+            'email' => 'admin@system.com',
+            'email_verified_at' => Carbon::now(),
+            'PhoneNumber' => '09301040145',
+            'Charge' => 999999,
+            'password' => \Hash::make(123),
+            'Type' => 'Admin',
+        ]);
+
+
     }
 }

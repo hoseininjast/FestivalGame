@@ -2,13 +2,27 @@
 <html lang="fa">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta name="description" content="Meta E-Bankroll investment and binary network system ">
+    <meta name="keywords" content="crypto, invest, cryptocurrency, bitcoin, mlm, binary">
+    <meta name="author" content="Meta E-Bankroll">
     <meta name="theme-color" content="#f7858d">
     <meta name="msapplication-navbutton-color" content="#f7858d">
     <meta name="apple-mobile-web-app-status-bar-style" content="#f7858d">
-    <title>didikala | Login Page</title>
+    <link rel="apple-touch-icon" href="{{asset('images/Logo/Logo.png')}}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{asset('images/Logo/Logo.png')}}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>
+        {{env('APP_NAME')}}
+        @if (request()->segments())
+            @if(request()->segment(1))
+                | {{request()->segment(1)}}
+            @endif
+        @endif
+    </title>
     <!-- Font Icon -->
     <link rel="stylesheet" href="{{asset('Front/assets/css/vendor/font-awesome.min.css')}}">
     <link rel="stylesheet" href="{{asset('Front/assets/css/vendor/materialdesignicons.min.css')}}">
@@ -24,6 +38,8 @@
     <!-- Main CSS File -->
     <link rel="stylesheet" href="{{asset('Front/assets/css/main.css')}}">
     <link rel="stylesheet" href="{{asset('Front/assets/css/colors/default.css')}}" id="colorswitch">
+
+
 </head>
 
 <body>
@@ -95,6 +111,16 @@
 <script src="{{asset('Front/assets/js/vendor/theia-sticky-sidebar.min.js')}}"></script>
 <!-- Main JS File -->
 <script src="{{asset('Front/assets/js/main.js')}}"></script>
+<script src="{{asset('Assets/Functions.js')}}"></script>
+<script src="{{asset('Assets/SweetAlert/sweetalert.js')}}"></script>
+@yield('js')
+<script>
+    @if($errors->any())
+        @foreach($errors->all() as $err)
+            ShowAlert('error', '{{$err}}')
+        @endforeach
+    @endif
+</script>
 </body>
 
 </html>

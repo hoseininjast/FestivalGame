@@ -16,6 +16,8 @@ class CreateProductCategoriesTable extends Migration
         Schema::create('product_categories', function (Blueprint $table) {
             $table->id();
             $table->string('Name');
+            $table->unsignedBigInteger('ParentID')->nullable();
+            $table->foreign('ParentID')->references('id')->on('product_categories')->cascadeOnDelete();
             $table->timestamps();
         });
     }

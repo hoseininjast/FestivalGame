@@ -16,8 +16,8 @@ class CreateBlogCommentsTable extends Migration
         Schema::create('blog_comments', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('PostID');
-            $table->unsignedBigInteger('UserID');
             $table->foreign('PostID')->on('blogs')->references('id')->cascadeOnDelete();
+            $table->unsignedBigInteger('UserID');
             $table->foreign('UserID')->on('users')->references('id')->cascadeOnDelete();
             $table->text('Comment');
             $table->bigInteger('isUseFull')->default(0);

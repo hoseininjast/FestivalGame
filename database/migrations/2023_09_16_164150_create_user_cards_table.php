@@ -15,6 +15,10 @@ class CreateUserCardsTable extends Migration
     {
         Schema::create('user_cards', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('UserID');
+            $table->foreign('UserID')->on('users')->references('id')->cascadeOnDelete();
+            $table->string('CardNumber');
+            $table->string('ExpireDate');
             $table->timestamps();
         });
     }

@@ -2,7 +2,7 @@
     <!-- Start ads -->
     <div class="ads-header-wrapper">
         <a href="#" class="ads-header hidden-sm" target="_blank"
-           style="background-image: url(./assets/img/banner/large-ads.jpg)"></a>
+           style="background-image: url(/Front/assets/img/banner/large-ads.jpg)"></a>
     </div>
     <!-- End ads -->
     <!-- Start topbar -->
@@ -12,7 +12,7 @@
                 <div class="col-lg-2 col-md-3 col-6">
                     <div class="logo-area">
                         <a href="#">
-                            <img src="./assets/img/logo.png" alt="">
+                            <img src="{{asset('images/Logo/Logo.png')}}" style="height: 50px" alt="">
                         </a>
                     </div>
                 </div>
@@ -43,31 +43,48 @@
                         </form>
                     </div>
                 </div>
+
+
+
                 <div class="col-md-4 col-6 topbar-left">
                     <ul class="nav float-left">
-                        <li class="nav-item account dropdown">
-                            <a class="nav-link" href="#" data-toggle="dropdown" aria-haspopup="true"
-                               aria-expanded="false">
-                                <span class="label-dropdown">حساب کاربری</span>
-                                <i class="mdi mdi-account-circle-outline"></i>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-sm dropdown-menu-left">
-                                <a class="dropdown-item" href="#">
-                                    <i class="mdi mdi-account-card-details-outline"></i>پروفایل
+                        @auth()
+                            <li class="nav-item account dropdown">
+                                <a class="nav-link" href="#" data-toggle="dropdown" aria-haspopup="true"
+                                   aria-expanded="false">
+                                    <span class="label-dropdown">حساب کاربری</span>
+                                    <i class="mdi mdi-account-circle-outline"></i>
                                 </a>
-                                <a class="dropdown-item" href="#">
-                                    <span class="float-left badge badge-dark">۴</span>
-                                    <i class="mdi mdi-comment-text-outline"></i>پیغام ها
+                                <div class="dropdown-menu dropdown-menu-sm dropdown-menu-left">
+                                    <a class="dropdown-item" href="#">
+                                        <i class="mdi mdi-account-card-details-outline"></i>پروفایل
+                                    </a>
+                                    <a class="dropdown-item" href="#">
+                                        <span class="float-left badge badge-dark">۴</span>
+                                        <i class="mdi mdi-comment-text-outline"></i>پیغام ها
+                                    </a>
+                                    <a class="dropdown-item" href="#">
+                                        <i class="mdi mdi-account-edit-outline"></i>ویرایش حساب کاربری
+                                    </a>
+                                    <div class="dropdown-divider" role="presentation"></div>
+
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();document.getElementById('logout-form').submit();"
+                                    >
+                                        <i class="mdi mdi-logout-variant"></i>خروج
+                                    </a>
+                                </div>
+                            </li>
+                        @else
+                            <li class="nav-item account ">
+                                <a class="nav-link" href="{{route('login')}}" >
+                                    <span class="label-dropdown">حساب کاربری</span>
+                                    <i class="mdi mdi-account-circle-outline"></i>
                                 </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="mdi mdi-account-edit-outline"></i>ویرایش حساب کاربری
-                                </a>
-                                <div class="dropdown-divider" role="presentation"></div>
-                                <a class="dropdown-item" href="#">
-                                    <i class="mdi mdi-logout-variant"></i>خروج
-                                </a>
-                            </div>
-                        </li>
+                            </li>
+
+                        @endauth
+
                     </ul>
                 </div>
             </div>
