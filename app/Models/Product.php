@@ -63,6 +63,8 @@ class Product extends Model
         'Status',
         'Colors',
         'Options',
+        'Amazing',
+        'Recommended',
         'Description',
         'CategoryID',
         'SubCategoryID',
@@ -70,4 +72,23 @@ class Product extends Model
         'Images',
     ];
     use HasFactory;
+
+
+    public function Category()
+    {
+        return $this->hasOne(ProductCategory::class , 'id' , 'CategoryID');
+    }
+
+
+    public function SubCategory()
+    {
+        return $this->hasOne(ProductCategory::class , 'id' , 'SubCategoryID');
+    }
+
+    public function GetPrice()
+    {
+        return $this->Price - ($this->Price * ($this->Discount / 100));
+    }
+
+
 }

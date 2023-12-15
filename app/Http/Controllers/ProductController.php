@@ -35,38 +35,15 @@ class ProductController extends Controller
             'Status' => ['required' , 'string' ,Rule::in('Available' , 'NotAvailable')],
             'Colors' => ['required' , 'array' ],
             'Options' => ['required' , 'array' ],
+            'Amazing' => ['required' , Rule::in('Yes' , 'No') ],
+            'Recommended' => ['required' , Rule::in('Yes' , 'No') ],
             'Description' => ['required' , 'string' ],
             'CategoryID' => ['required' , 'exists:product_categories,id'],
             'SubCategoryID' => ['required' , 'exists:product_categories,id'],
             'MainImage' => ['required' ,  'file'],
             'OtherImages' => ['required' ,'array'  ],
         ]);
-//        $validator = Validator::make($request->all(), [
-//            'Name' => ['required' , 'string'],
-//            'Brand' => ['required' , 'string'],
-//            'Price' => ['required' , 'numeric'],
-//            'PartnerPrice' => ['required' , 'numeric'],
-//            'Discount' => ['required' , 'int' , 'max:100'],
-//            'Count' => ['required' , 'int' ],
-//            'Type' => ['required' , 'int' ,Rule::in('Physical' , 'Digital')],
-//            'Status' => ['required' , 'int' ,Rule::in('Available' , 'NotAvailable')],
-//            'Colors' => ['required' , 'array' ],
-//            'Options' => ['required' , 'array' ],
-//            'Description' => ['required' , 'string' ],
-//            'ParentID' => ['required' , 'exists:product_categories,id'],
-//            'SubCategory' => ['required' , 'exists:product_categories,id'],
-//            'MainImage' => ['required' , 'file' ],
-//            'OtherImages' => ['required' , 'array' ],
-//        ]);
-//
-//        if ($validator->fails()) {
-//            return redirect()->back()
-//                ->withErrors($validator)
-//                ->withInput();
-//        }
-//
-//        $data = $validator->validated();
-//        dd($request->all());
+
 
         $OtherImagesUrl = [];
         $MainImageUrl = '';
@@ -79,7 +56,7 @@ class ProductController extends Controller
 
 
         Product::create([
-            'ProductID' => 'FGP' . rand(100,10000) . time(),
+            'ProductID' => 'FGP' . rand(1000000,9999999) . time(),
             'Name' => $request->Name,
             'Description' => $request->Description,
             'Price' => $request->Price,
@@ -93,6 +70,8 @@ class ProductController extends Controller
             'Count' => $request->Count,
             'Colors' => implode(',' , $request->Colors),
             'Options' => implode(',' , $request->Options),
+            'Amazing' => $request->Amazing,
+            'Recommended' => $request->Recommended,
             'CategoryID' => $request->CategoryID,
             'SubCategoryID' => $request->SubCategoryID,
         ]);

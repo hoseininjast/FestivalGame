@@ -132,6 +132,31 @@
                                                 </div>
                                             </div>
                                         </div>
+
+
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <label for="Amazing">شگفت انگیز</label>
+                                                    <select id="Amazing" name="Amazing" class="selectpicker form-control">
+                                                        <option disabled selected>شگفت انگیز؟</option>
+                                                        <option @if(old('Amazing') == 'Yes') selected @endif value="Yes">بله</option>
+                                                        <option @if(old('Amazing') == 'No') selected @endif value="No">نه </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <label for="Status">پیشناهاد ما ؟</label>
+                                                    <select id="Type" name="Recommended" class="selectpicker form-control">
+                                                        <option disabled selected>پیشناهاد ما ؟</option>
+                                                        <option @if(old('Recommended') == 'Yes') selected @endif value="Yes">بله</option>
+                                                        <option @if(old('Recommended') == 'No') selected @endif value="No">نه </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+
                                         <div class="row">
                                             <div class="col-6">
                                                 <div class="form-group">

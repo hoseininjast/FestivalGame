@@ -134,15 +134,6 @@
                         <a href="element_color_library.html"> کتابخانه رنگ </a>
                     </li>
                     <li>
-                        <a href="element_dropdown.html"> کشویی </a>
-                    </li>
-                    <li>
-                        <a href="element_infobox.html"> جعبه اطلاعات </a>
-                    </li>
-                    <li>
-                        <a href="element_jumbotron.html"> جومبوترن </a>
-                    </li>
-                    <li>
                         <a href="element_loader.html"> لودر </a>
                     </li>
                     <li>
@@ -151,32 +142,20 @@
                     <li>
                         <a href="element_popovers.html"> توضیحات </a>
                     </li>
-                    <li>
-                        <a href="element_progress_bar.html"> نوار پیشرفت </a>
-                    </li>
+
                     <li>
                         <a href="element_search.html"> جستجو </a>
                     </li>
                     <li>
                         <a href="element_tooltips.html"> نکات راهنمایی </a>
                     </li>
-                    <li>
-                        <a href="element_treeview.html"> نمای درختی </a>
-                    </li>
+
                     <li>
                         <a href="element_typography.html"> تایپوگرافی </a>
                     </li>
                 </ul>
             </li>
 
-            <li class="menu">
-                <a href="fonticons.html" aria-expanded="false" class="dropdown-toggle">
-                    <div class="">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-target"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
-                        <span>فونت آیکون</span>
-                    </div>
-                </a>
-            </li>
 
             <li class="menu">
                 <a href="widgets.html" aria-expanded="false" class="dropdown-toggle">
@@ -187,61 +166,9 @@
                 </a>
             </li>
 
-            <li class="menu">
-                <a href="table_basic.html" aria-expanded="false" class="dropdown-toggle">
-                    <div class="">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-layout"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
-                        <span>جداول</span>
-                    </div>
-                </a>
-            </li>
 
-            <li class="menu">
-                <a href="#datatables" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                    <div class="">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-layers"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
-                        <span>جداول داده</span>
-                    </div>
-                    <div>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
-                    </div>
-                </a>
-                <ul class="collapse submenu list-unstyled" id="datatables" data-parent="#accordionExample">
-                    <li>
-                        <a href="table_dt_basic.html">پایه ای</a>
-                    </li>
-                    <li>
-                        <a href="table_dt_basic-light.html"> لایت </a>
-                    </li>
-                    <li>
-                        <a href="table_dt_ordering_sorting.html"> ترتیب مرتب سازی </a>
-                    </li>
-                    <li>
-                        <a href="table_dt_multi-column_ordering.html"> چند ستونه </a>
-                    </li>
-                    <li>
-                        <a href="table_dt_multiple_tables.html"> جدول چندگانه</a>
-                    </li>
-                    <li>
-                        <a href="table_dt_alternative_pagination.html"> پیغام صفحه</a>
-                    </li>
-                    <li>
-                        <a href="table_dt_custom.html"> سفارشی </a>
-                    </li>
-                    <li>
-                        <a href="table_dt_range_search.html"> دامنه جستجو </a>
-                    </li>
-                    <li>
-                        <a href="table_dt_html5.html"> صادرات HTML5 </a>
-                    </li>
-                    <li>
-                        <a href="table_dt_live_dom_ordering.html"> سفارش DOM زنده </a>
-                    </li>
-                    <li>
-                        <a href="table_dt_miscellaneous.html"> متفرقه </a>
-                    </li>
-                </ul>
-            </li>
+
+
 
             <li class="menu">
                 <a href="#forms" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
@@ -418,14 +345,7 @@
                 </ul>
             </li>
 
-            <li class="menu">
-                <a href="dragndrop_dragula.html" aria-expanded="false" class="dropdown-toggle">
-                    <div class="">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-move"><polyline points="5 9 2 12 5 15"></polyline><polyline points="9 5 12 2 15 5"></polyline><polyline points="15 19 12 22 9 19"></polyline><polyline points="19 9 22 12 19 15"></polyline><line x1="2" y1="12" x2="22" y2="12"></line><line x1="12" y1="2" x2="12" y2="22"></line></svg>
-                        <span>کشیدن و انداختن</span>
-                    </div>
-                </a>
-            </li>
+
 
             <li class="menu">
                 <a href="map_jvector.html" aria-expanded="false" class="dropdown-toggle">
@@ -445,31 +365,7 @@
                 </a>
             </li>
 
-            <li class="menu">
-                <a href="#starter-kit" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                    <div class="">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-terminal"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>
-                        <span>کیت استارت</span>
-                    </div>
-                    <div>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
-                    </div>
-                </a>
-                <ul class="collapse submenu list-unstyled" id="starter-kit" data-parent="#accordionExample">
-                    <li>
-                        <a href="starter_kit_blank_page.html"> صفحه خالی </a>
-                    </li>
-                    <li>
-                        <a href="starter_kit_breadcrumbs.html"> نشانگر موقعیت </a>
-                    </li>
-                    <li>
-                        <a href="starter_kit_boxed.html"> جعبه </a>
-                    </li>
-                    <li>
-                        <a href="starter_kit_alt_menu.html"> منوی ترجیحی </a>
-                    </li>
-                </ul>
-            </li>
+
 
             <li class="menu">
                 <a href="../../../../../sotonshop.ir/demo/cork/go/Docs/Docs-fa/index.html" aria-expanded="false" class="dropdown-toggle">

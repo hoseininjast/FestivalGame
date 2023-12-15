@@ -19,7 +19,7 @@
                         <div class="widget-content widget-content-area">
                             <div class="row">
                                 <div class="col-lg-6 col-12 mx-auto">
-                                    <form action="{{route('Dashboard.ProductCategory.Create')}}" method="POST">
+                                    <form action="{{route('Dashboard.ProductCategory.Create')}}" method="POST" enctype="multipart/form-data">
                                         @csrf
 
                                         <div class="form-group">
