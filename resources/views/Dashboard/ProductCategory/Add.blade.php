@@ -28,8 +28,8 @@
                                         </div>
                                         <div class="form-row mb-4">
                                             <div class="col-6">
-                                                <label for="MainImage">عکس دسته بندی</label>
-                                                <input type="file" class="form-control-file" name="MainImage" id="MainImage" required>
+                                                <label for="Icon">عکس دسته بندی</label>
+                                                <input type="file" class="form-control-file" name="Icon" id="Icon" required>
                                             </div>
 
                                             <div class="form-group col-md-6">

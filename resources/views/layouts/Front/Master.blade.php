@@ -8,6 +8,7 @@
     <meta name="theme-color" content="#f7858d">
     <meta name="msapplication-navbutton-color" content="#f7858d">
     <meta name="apple-mobile-web-app-status-bar-style" content="#f7858d">
+    <link rel="icon" type="image/x-icon" href="{{asset('images/Logo/Logo.png')}}"/>
     <title>
         {{env('APP_NAME')}}
         @if (request()->segments())
